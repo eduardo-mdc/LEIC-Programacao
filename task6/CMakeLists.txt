@@ -3,4 +3,4 @@ project(task6)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(task6 main.cpp)
+add_executable(ex2 ex2.cpp ex2.h)
