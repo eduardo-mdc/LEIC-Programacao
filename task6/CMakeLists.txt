@@ -3,4 +3,4 @@ project(task6)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ex2 ex2.cpp ex2.h)
+add_executable(ex2 src/mainex2.cpp src/mainex2.h)
