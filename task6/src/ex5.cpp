@@ -19,8 +19,9 @@ std::ostream& operator<<(std::ostream& out, const leic::dmatrix& m) {
 }
 
 int main(){
-    leic::dmatrix m(5,5);
+    leic::dmatrix m(7,10);
     m.fill_diagonal(10);
+    m.transpose();
     std::cout << m;
     return 0;
 }

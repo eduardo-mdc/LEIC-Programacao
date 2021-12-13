@@ -10,7 +10,7 @@
 namespace leic {
     class dmatrix {
     private:
-        double** values;
+        double **values;
         int lines,cols;
     public:
         dmatrix(int lines, int cols);
