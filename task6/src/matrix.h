@@ -22,6 +22,9 @@ namespace leic {
         void fill(double v);
         void fill_diagonal(double v);
         void transpose();
+        static dmatrix identity(int n);
+        dmatrix(const dmatrix& m);
+        dmatrix& operator=(const dmatrix& m);
     };
 }
 

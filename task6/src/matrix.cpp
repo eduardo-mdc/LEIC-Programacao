@@ -5,10 +5,6 @@
 #include "matrix.h"
 using namespace leic;
 
-
-
-
-
 dmatrix::dmatrix(int lines, int cols) {
     assert(lines > 0 && cols > 0);
     //values = new double*[lines];
@@ -28,6 +24,21 @@ dmatrix::dmatrix(int lines, int cols) {
     this->cols = cols;
 }
 
+dmatrix::dmatrix(const dmatrix &m) {
+    //Allocating memory with malloc.
+    lines = m.getLines();
+    cols = m.getCols();
+    values = (double **)malloc(lines * sizeof(double*));
+    for(int i = 0; i < lines; i++) values[i] = (double*)malloc(cols*sizeof (double));
+
+    for (int i = 0; i < lines; i++) {
+        //values[i] = data + i * cols; // part of new allocation
+        for (int j = 0; j < cols; j++) {
+            values[i][j] = m.at(i,j);
+        }
+    }
+}
+
 dmatrix::~dmatrix() {
     for(int i = 0; i < cols; i++){
         //delete values[i];
@@ -36,6 +47,9 @@ dmatrix::~dmatrix() {
     free(values);
    // delete values;
 }
+
+//dmatrix::dmatrix& operator=(const dmatrix& m);
+
 
 int dmatrix::getLines() const {
     return lines;
@@ -67,7 +81,6 @@ void dmatrix::fill_diagonal(double v) {
     }
 
 }
-
 
 void dmatrix::transpose() {
 
@@ -120,3 +133,10 @@ void dmatrix::transpose() {
     lines = tempV;
 
 }
+
+dmatrix dmatrix::identity(int n) {
+    dmatrix mat(n,n);
+    mat.fill_diagonal(1);
+    return mat;
+}
+
